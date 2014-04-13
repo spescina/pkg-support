@@ -1,20 +1,28 @@
 {
-    "name": "spescina/pkg-support",
-    "description": "",
-    "authors": [
-        {
-            "name": "Simone Pescina",
-            "email": "s.pescina@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "illuminate/support": "4.1.*"
-    },
-    "autoload": {
-        "psr-0": {
-            "Spescina\\PkgSupport": "src/"
-        }
-    },
-    "minimum-stability": "stable"
+        "name": "spescina/pkg-support",
+        "description": "Support config and language classes for creating laravel packages",
+        "keywords": ["laravel", "config", "lang", "package"],
+        "authors": [
+                {
+                        "name": "Simone Pescina",
+                        "email": "s.pescina@gmail.com"
+                }
+        ],
+        "license": "MIT",
+        "support": {
+                "issues": "https://github.com/spescina/pkg-support/issues"
+        },
+        "require": {
+                "php": ">=5.3.0",
+                "illuminate/support": "4.1.*"
+        },
+        "require-dev": {
+                "mockery/mockery": "0.9.*"
+        },
+        "autoload": {
+                "psr-0": {
+                        "Spescina\\PkgSupport": "src/"
+                }
+        },
+        "minimum-stability": "stable"
 }
