@@ -6,6 +6,14 @@ use Spescina\PkgSupport\Config;
 
 class ConfigTest extends PHPUnit_Framework_TestCase {
 
+        private $config;
+        private $registrationKey = 'mypackage';
+        
+        public function setUp()
+        {
+                $this->config = new Config($this->registrationKey);
+        }
+
         public function tearDown()
         {
                 m::close();
@@ -13,51 +21,39 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
         
         public function test_get_key_alone()
         {
-                $registrationKey = 'mypackage';
-                
                 IlluminateConfig::shouldReceive('get')
                         ->once()
-                        ->with("$registrationKey::$registrationKey.key")
+                        ->with("$this->registrationKey::$this->registrationKey.key")
                         ->andReturn('key value');
                 
-                $service = new Config($registrationKey);
-                
-                $config = $service->get('key');
+                $config = $this->config->get('key');
                 
                 $this->assertEquals('key value', $config);                
         }
         
         public function test_get_key_with_section()
         {
-                $registrationKey = 'mypackage';
-                
                 IlluminateConfig::shouldReceive('get')
                         ->once()
-                        ->with("$registrationKey::section.key")
+                        ->with("$this->registrationKey::section.key")
                         ->andReturn('another key value');
                 
-                $service = new Config($registrationKey);
-                
-                $config = $service->get('key', 'section');
+                $config = $this->config->get('key', 'section');
                 
                 $this->assertEquals('another key value', $config);                
         }
         
         public function test_get_all_keys()
         {
-                $registrationKey = 'mypackage';
-                
                 IlluminateConfig::shouldReceive('get')
                         ->once()
-                        ->with("$registrationKey::$registrationKey")
+                        ->with("$this->registrationKey::$this->registrationKey")
                         ->andReturn(array(
                             'key' => 'key value',
                             'another_key' => 'anoher key value'
                         ));
                 
-                $service = new Config($registrationKey);
-                
-                $config = $service->get();
+                $config = $this->config->get();
                 
                 $this->assertEquals(array(
                     'key' => 'key value',
@@ -67,19 +63,15 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
         
         public function test_get_all_keys_with_ignored_section()
         {
-                $registrationKey = 'mypackage';
-                
                 IlluminateConfig::shouldReceive('get')
                         ->once()
-                        ->with("$registrationKey::$registrationKey")
+                        ->with("$this->registrationKey::$this->registrationKey")
                         ->andReturn(array(
                             'key' => 'key value',
                             'another_key' => 'anoher key value'
                         ));
                 
-                $service = new Config($registrationKey);
-                
-                $config = $service->get(null, 'section');
+                $config = $this->config->get(null, 'section');
                 
                 $this->assertEquals(array(
                     'key' => 'key value',

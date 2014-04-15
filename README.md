@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/spescina/pkg-support.svg?branch=develop)](https://travis-ci.org/spescina/pkg-support)
+[![Build Status](https://travis-ci.org/spescina/pkg-support.svg?branch=master)](https://travis-ci.org/spescina/pkg-support?branch=master)
+[![Coverage Status](https://coveralls.io/repos/spescina/pkg-support/badge.png?branch=master)](https://coveralls.io/r/spescina/pkg-support?branch=master)
 # Package Development Support  
 
 Support config and language classes for creating laravel packages
